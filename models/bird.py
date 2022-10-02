@@ -56,9 +56,9 @@ class Bird:
 
     def show(self, game_score, canvas):
         color = "yellow"
-        if game_score >= 100:
+        if game_score >= 20:
             color = "red"
-        elif game_score >= 25:
+        elif game_score >= 5:
             color = "blue"
         position = ""
         if self.velocity < -self.midflap_range:

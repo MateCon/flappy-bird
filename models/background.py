@@ -13,7 +13,9 @@ class Background:
 
     def show(self, game_score, canvas):
         daytime = "day"
-        if game_score >= 50:
+        while game_score >= 20:
+            game_score -= 20
+        if game_score >= 10:
             daytime = "night"
         canvas.blit(self.images[daytime],
                     (self.position[0], self.position[1]))
