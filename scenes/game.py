@@ -33,7 +33,7 @@ class GameScene:
         return None
 
     def show(self, canvas):
-        self.background.show(canvas)
+        self.background.show(self.pipe_spawner.game_score, canvas)
         self.pipe_spawner.show(canvas)
         self.base.show(canvas)
-        self.bird.show(canvas)
+        self.bird.show(self.pipe_spawner.game_score, canvas)

@@ -8,9 +8,21 @@ class Bird:
         self.jump_force = -5
 
         self.images = {
-            "downflap": pygame.image.load("./assets/sprites/yellowbird-downflap.png").convert(),
-            "midflap": pygame.image.load("./assets/sprites/yellowbird-midflap.png").convert(),
-            "upflap": pygame.image.load("./assets/sprites/yellowbird-upflap.png").convert(),
+            "yellow": {
+                "downflap": pygame.image.load("./assets/sprites/yellowbird-downflap.png").convert(),
+                "midflap": pygame.image.load("./assets/sprites/yellowbird-midflap.png").convert(),
+                "upflap": pygame.image.load("./assets/sprites/yellowbird-upflap.png").convert(),
+            },
+            "blue": {
+                "downflap": pygame.image.load("./assets/sprites/bluebird-downflap.png").convert(),
+                "midflap": pygame.image.load("./assets/sprites/bluebird-midflap.png").convert(),
+                "upflap": pygame.image.load("./assets/sprites/bluebird-upflap.png").convert(),
+            },
+            "red": {
+                "downflap": pygame.image.load("./assets/sprites/redbird-downflap.png").convert(),
+                "midflap": pygame.image.load("./assets/sprites/redbird-midflap.png").convert(),
+                "upflap": pygame.image.load("./assets/sprites/redbird-upflap.png").convert(),
+            },
         }
 
         self.jump_sound = pygame.mixer.Sound("./assets/audio/wing.wav")
@@ -42,16 +54,21 @@ class Bird:
 
         return self.position
 
-    def show(self, canvas):
-        curr_image = ""
+    def show(self, game_score, canvas):
+        color = "yellow"
+        if game_score >= 100:
+            color = "red"
+        elif game_score >= 25:
+            color = "blue"
+        position = ""
         if self.velocity < -self.midflap_range:
-            curr_image = "downflap"
+            position = "downflap"
         elif self.velocity > self.midflap_range:
-            curr_image = "upflap"
+            position = "upflap"
         else:
-            curr_image = "midflap"
+            position = "midflap"
 
-        canvas.blit(self.images[curr_image],
+        canvas.blit(self.images[color][position],
                     (self.position[0], self.position[1]))
 
     def restart(self):
