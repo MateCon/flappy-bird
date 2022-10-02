@@ -21,6 +21,7 @@ class PipeSpawner:
             self.add_pipe(pygame)
 
         self.point_sound = pygame.mixer.Sound("./assets/audio/point.wav")
+        self.point_sound.set_volume(0.5)
 
     def get_pipe_position(self):
         return [self.pipes[0].position, self.pipes[0].gap_position, self.pipes[0].gap_height]

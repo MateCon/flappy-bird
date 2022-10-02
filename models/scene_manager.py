@@ -11,6 +11,7 @@ class SceneManager:
         self.game_over = GameOverScene(pygame)
 
         self.click_sound = pygame.mixer.Sound("./assets/audio/swoosh.wav")
+        self.click_sound.set_volume(0.5)
 
     def on_click(self, pygame):
         if self.curr_scene == "game":
@@ -33,7 +34,7 @@ class SceneManager:
                     self.on_click(pygame)
 
         if self.curr_scene != "menu":
-            scene = self.game.update(pygame)
+            scene = self.game.update(self.curr_scene, pygame)
             if scene:
                 self.curr_scene = scene
         self.menu.update(pygame)

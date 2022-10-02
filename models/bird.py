@@ -14,7 +14,9 @@ class Bird:
         }
 
         self.jump_sound = pygame.mixer.Sound("./assets/audio/wing.wav")
+        self.jump_sound.set_volume(0.5)
         self.death_sound = pygame.mixer.Sound("./assets/audio/hit.wav")
+        self.death_sound.set_volume(0.5)
 
         self.midflap_range = 2
 

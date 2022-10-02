@@ -1,6 +1,6 @@
 class Background:
     def __init__(self, pygame):
-        self.position = (0, 0)
+        self.position = [0, 0]
         self.daytime = "day"
         self.images = {
             "day": pygame.image.load("./assets/sprites/background-day.png").convert(),
@@ -14,5 +14,13 @@ class Background:
             raise Exception(
                 'Background Error: daytime is either "day" or "night"')
 
+    def update(self):
+        self.position[0] -= 0.2
+        if self.position[0] < -288:
+            self.position[0] += 288
+
     def show(self, canvas):
-        canvas.blit(self.images[self.daytime], self.position)
+        canvas.blit(self.images[self.daytime],
+                    (self.position[0], self.position[1]))
+        canvas.blit(self.images[self.daytime],
+                    (self.position[0] + 288, self.position[1]))

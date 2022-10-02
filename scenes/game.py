@@ -17,7 +17,11 @@ class GameScene:
                 return True
         return False
 
-    def update(self, pygame):
+    def update(self, scene, pygame):
+        if scene != "menu":
+            self.background.update()
+            self.base.update()
+
         self.pipe_spawner.update(pygame)
         pipe_position = self.pipe_spawner.get_pipe_position()
         bird_position = self.bird.update(pipe_position)
